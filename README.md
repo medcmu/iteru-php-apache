@@ -12,21 +12,21 @@
 
 <h3><code>Docker Compose</code></h3>
 <pre>
-       <code>web:
+  <code>web:
       container_name: 'web'
       image: medcmu/iteru-php-apache
       restart: always
       ports:
         - "8080:80"
       volumes:
-        - /path/to/web:/var/www/html
-        - /path/to/config/apache2.conf:/etc/apache2/apache2.conf
-        - /path/to/config/php-xxx.ini:/usr/local/etc/php/php.ini</code>
+        - ./site:/var/www/html
+        - ./config/apache/apache2.conf:/etc/apache2/apache2.conf
+        - ./config/php/php.ini:/usr/local/etc/php/php.ini</code>
 </pre>
 
 <h3><code>Docker Run</code></h3>
 <pre>
-     <code>$ docker run --name some-web -v /path/to/web:/var/www/html -v /path/to/config/apache2.conf:/etc/apache2/apache2.conf -v /path/to/config/php-xxx.ini:/usr/local/etc/php/php.ini -d -p 8080:80 medcmu/iteru-php-apache</code>
+     <code>$ docker run --name some-web -v /path/to/site:/var/www/html -v /path/to/config/apache2.conf:/etc/apache2/apache2.conf -v /path/to/config/php.ini:/usr/local/etc/php/php.ini -d -p 8080:80 medcmu/iteru-php-apache</code>
 </pre>
 
 <h3><code>Version 8.0.13 extention install list</code></h3>
