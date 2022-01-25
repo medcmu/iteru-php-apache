@@ -1,7 +1,7 @@
 <h1>Source Reference</h1>
 <ul>
 <li><p><strong>Maintained by</strong>:  
-<a href="https://hub.docker.com/u/medcmu" rel="nofollow noopener">mis57</a></p>
+<a href="https://hub.docker.com/u/medcmu" rel="nofollow noopener">MedCMU</a></p>
 </li>
 <li><p><strong>Where to get help</strong>:  
 <a href="https://forums.docker.com/" rel="nofollow noopener">the Docker Community Forums</a>, <a href="https://dockr.ly/slack" rel="nofollow noopener">the Docker Community Slack</a>, or <a href="https://stackoverflow.com/search?tab=newest&amp;q=docker" rel="nofollow noopener">Stack Overflow</a></p>
