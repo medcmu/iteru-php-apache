@@ -1,23 +1,30 @@
-version: '3.1'
-
+version: '3.9'
 services:
-
-  site:
-    container_name: 'site'
+  web:
+    container_name: 'web'
     image: medcmu/iteru-php-apache
     restart: always
     ports:
       - "8080:80"
+    environment:
+      WP_REDIS_HOST: "localhost.redis"
+      WP_REDIS_PORT: "6379"
+      WP_REDIS_PASSWORD: "password"
+    deploy:
+      resources:
+        limits:
+          memory: 768M
+    memswap_limit: 768M
+    ulimits:
+      nofile: {
+        soft: 65536,
+        hard: 65536
+      }
     volumes:
-      - ./site:/var/www/html
-      - ./config/apache/apache2.conf:/etc/apache2/apache2.conf
-      - ./config/php/php.ini:/usr/local/etc/php/php.ini
-    networks:
-      - iteru-network
-
-networks:
-  iteru-network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 192.168.124.1/24
+      - /path/to/web:/var/www/html
+      - /path/to/config/cache-headers.conf:/etc/apache2/conf-enabled/10-cache-headers.conf:ro
+      - /path/to/config/mpm_prefork.conf:/etc/apache2/mods-available/mpm_prefork.conf:ro
+      - /path/to/config/base.ini:/usr/local/etc/php/conf.d/00-base.ini:ro
+      - /path/to/config/opcache.ini:/usr/local/etc/php/conf.d/10-opcache.ini:ro
+      - /path/to/config/redis.ini:/usr/local/etc/php/conf.d/20-redis.ini
+    network-mode: bridge
