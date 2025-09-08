@@ -35,10 +35,11 @@
         }
       volumes:
         - /path/to/web:/var/www/html
-        - /path/to/config/10-cache-headers.conf:/etc/apache2/conf-enabled/10-cache-headers.conf:ro
+        - /path/to/config/cache-headers.conf:/etc/apache2/conf-enabled/10-cache-headers.conf:ro
         - /path/to/config/mpm_prefork.conf:/etc/apache2/mods-available/mpm_prefork.conf:ro
-        - /path/to/config/00-base.ini:/usr/local/etc/php/conf.d/00-base.ini:ro
-        - /path/to/config/10-opcache.ini:/usr/local/etc/php/conf.d/10-opcache.ini:ro
+        - /path/to/config/php.ini:/usr/local/etc/php/conf.d/00-base.ini:ro
+        - /path/to/config/opcache.ini:/usr/local/etc/php/conf.d/10-opcache.ini:ro
+        - /path/to/config/redis.ini:/usr/local/etc/php/conf.d/20-redis.ini
       network-mode: bridge
   </code>
 </pre>
